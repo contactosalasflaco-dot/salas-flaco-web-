@@ -120,6 +120,21 @@ html.mouth-ready .animate-mouth-bottom {
   }
 }
 
+/* En desktop la boca no llega a los bordes de la pantalla:
+   desvanecemos los costados para que no se vea el corte del PNG */
+@media (min-width: 768px) {
+  .mouth-clamp {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 7%,
+      black 93%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(to right, transparent 0, black 7%, black 93%, transparent 100%);
+  }
+}
+
 /* Textura de lienzo sutil sobre todo el sitio */
 .canvas-grain::after {
   content: "";

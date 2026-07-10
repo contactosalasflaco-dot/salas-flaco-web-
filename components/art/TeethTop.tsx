@@ -14,21 +14,23 @@ const TOOTH_TRANSITION = "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)";
 export default function TeethTop() {
   return (
     <div aria-hidden="true" className="animate-mouth-top pointer-events-none fixed inset-x-0 top-0 z-[80] select-none">
-      <div className="relative">
-        {/* Respaldo de encía "infinita": se extiende una pantalla entera
-            hacia arriba para que al cerrar la boca nunca se vea el corte del PNG */}
+      {/* En desktop la boca se limita por alto de pantalla (≈30vh) para no
+          comerse la página; en mobile sigue ocupando todo el ancho */}
+      <div className="relative mx-auto" style={{ width: "min(100vw, 124vh)" }}>
+        {/* Respaldo de encía "infinita" (solo mobile): se extiende hacia
+            arriba para que nunca se vea el corte del PNG */}
         <div
-          className="absolute inset-x-0"
+          className="absolute inset-x-0 md:hidden"
           style={{
             bottom: "55%",
             height: "150vh",
             backgroundImage: "url(/textura-tile.webp)",
             backgroundSize: "100% auto",
-            backgroundRepeat: "repeat",
+            backgroundRepeat: "repeat-y",
           }}
         />
 
-        <img src="/arriba.webp" alt="" className="relative block w-full" draggable={false} />
+        <img src="/arriba.webp" alt="" className="mouth-clamp relative block w-full" draggable={false} />
 
         {/* Diente frontal izquierdo → Shows (entradas) */}
         <a

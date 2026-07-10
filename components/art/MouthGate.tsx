@@ -25,8 +25,13 @@ export default function MouthGate() {
       document.documentElement.classList.add("mouth-ready");
     };
 
-    Promise.all(
-      ASSETS.map(
+    /* Tiempo mínimo con la boca cerrada, para que la animación
+       se aprecie incluso con las imágenes ya en caché */
+    const minClosed = new Promise<void>((resolve) => setTimeout(resolve, 900));
+
+    Promise.all([
+      minClosed,
+      ...ASSETS.map(
         (src) =>
           new Promise<void>((resolve) => {
             const img = new Image();
@@ -38,7 +43,7 @@ export default function MouthGate() {
             img.src = src;
           }),
       ),
-    ).then(open);
+    ]).then(open);
 
     const failsafe = setTimeout(open, 8000);
     return () => clearTimeout(failsafe);

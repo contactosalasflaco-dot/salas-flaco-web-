@@ -24,6 +24,11 @@ export default function Hero() {
         <PlayerControls className="md:hidden" />
         <span className="md:hidden">{second}</span>
       </h1>
+
+      {/* Desktop: controles debajo del nombre */}
+      <div className="mt-10 hidden md:block">
+        <PlayerControls />
+      </div>
     </section>
   );
 }
