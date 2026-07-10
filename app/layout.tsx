@@ -22,14 +22,54 @@ export const metadata: Metadata = {
     default: `${SITE.name} — Sitio oficial`,
     template: `%s — ${SITE.name}`,
   },
-  description: SITE.tagline,
+  description: SITE.description,
+  keywords: [
+    SITE.name,
+    "música",
+    "artista",
+    "shows",
+    "recitales",
+    "entradas",
+    "merch",
+    "Buenos Aires",
+    "Argentina",
+  ],
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  formatDetection: { telephone: false },
+  alternates: { canonical: "/" },
   openGraph: {
-    title: SITE.name,
-    description: SITE.tagline,
+    title: `${SITE.name} — Sitio oficial`,
+    description: SITE.description,
     url: SITE.url,
     siteName: SITE.name,
     locale: SITE.locale,
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: `La dentadura de ${SITE.name}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE.name} — Sitio oficial`,
+    description: SITE.description,
+    images: ["/og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -37,10 +77,30 @@ export const viewport: Viewport = {
   themeColor: "#1e1712",
 };
 
+/** JSON-LD del artista para buscadores. */
+function ArtistJsonLd() {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    name: SITE.name,
+    url: SITE.url,
+    description: SITE.description,
+    image: `${SITE.url}/og.png`,
+    logo: `${SITE.url}/icon-512.png`,
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <body className={`${crayon.variable} canvas-grain antialiased`}>
+        <ArtistJsonLd />
         {/* Filtro global: ondulación de pintura para titulares (uso: filter: url(#paint-wobble)) */}
         <svg aria-hidden="true" className="absolute h-0 w-0">
           <defs>
