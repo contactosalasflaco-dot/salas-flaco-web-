@@ -29,6 +29,13 @@ export default function Hero() {
       <div className="mt-10 hidden md:block">
         <PlayerControls />
       </div>
+
+      {/* Crédito del desarrollador — solo mobile.
+          Posición absoluta: no empuja el bloque central hacia arriba.
+          Queda justo por encima de los dientes de abajo (~27vw de alto). */}
+      <p className="absolute bottom-[30vw] left-1/2 -translate-x-1/2 text-[10px] text-black md:hidden">
+        dev @josessoria
+      </p>
     </section>
   );
 }
