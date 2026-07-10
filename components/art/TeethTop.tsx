@@ -13,7 +13,7 @@ const TOOTH_TRANSITION = "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)";
 
 export default function TeethTop() {
   return (
-    <div aria-hidden="true" className="animate-mouth-top pointer-events-none fixed inset-x-0 top-0 z-[80] select-none">
+    <div aria-hidden="true" className="animate-mouth-top pointer-events-none fixed inset-x-0 top-0 z-[81] select-none">
       {/* En desktop la boca se limita por alto de pantalla (≈30vh) para no
           comerse la página; en mobile sigue ocupando todo el ancho */}
       <div className="relative mx-auto" style={{ width: "min(100vw, 124vh)" }}>
