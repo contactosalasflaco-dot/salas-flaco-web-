@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200" preserveAspectRatio="none">
+  <!-- CAPA 1 · Capa media: colinas / oleaje de pintura. Fondo transparente.
+       Reglas del borde inferior:
+       · NUNCA tocar y=1200 (el borde recto del archivo quedaría visible).
+       · Olas profundas (±40px) para que jamás se lea como línea recta.
+       · La colina verde (frontal) cubre hasta y≈1140 mínimo: en reposo
+         la pintura tapa el borde de la pantalla incluso con el parallax
+         de mouse. -->
+  <defs>
+    <filter id="oil1" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015 0.04" numOctaves="4" seed="21" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="70"/>
+    </filter>
+  </defs>
+  <g filter="url(#oil1)">
+    <path d="M-50 780 Q 300 640 640 740 T 1300 700 T 2000 760 L 2000 1040 Q 1760 1090 1520 1045 Q 1280 1005 1040 1070 Q 800 1110 560 1050 Q 320 1010 -50 1075 Z" fill="#274b7a" opacity="0.9"/>
+    <path d="M-50 880 Q 400 760 820 850 T 1560 820 T 2000 870 L 2000 1090 Q 1740 1140 1500 1090 Q 1260 1050 1020 1115 Q 780 1155 540 1095 Q 300 1055 -50 1120 Z" fill="#16294a" opacity="0.92"/>
+    <!-- Colina verde frontal: la que cierra el cuadro abajo -->
+    <path d="M-50 990 Q 500 880 1000 960 T 2000 950 L 2000 1155 Q 1800 1192 1600 1152 Q 1400 1118 1200 1168 Q 1000 1194 800 1150 Q 600 1116 400 1170 Q 220 1192 -50 1148 Z" fill="#4a7d68" opacity="0.9"/>
+    <!-- Salpicaduras flotando SOBRE el borde (dan textura sin bajar de y=1190) -->
+    <ellipse cx="300" cy="1108" rx="85" ry="14" fill="#4a7d68" opacity="0.55"/>
+    <ellipse cx="700" cy="1092" rx="60" ry="11" fill="#16294a" opacity="0.45"/>
+    <ellipse cx="1100" cy="1112" rx="100" ry="14" fill="#4a7d68" opacity="0.5"/>
+    <ellipse cx="1500" cy="1095" rx="70" ry="12" fill="#274b7a" opacity="0.45"/>
+    <ellipse cx="1820" cy="1110" rx="80" ry="13" fill="#4a7d68" opacity="0.5"/>
+  </g>
+</svg>

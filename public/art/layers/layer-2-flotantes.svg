@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200" preserveAspectRatio="none">
+  <!-- CAPA 2 · Elementos flotantes: pinceladas sueltas en el aire. Fondo transparente. -->
+  <defs>
+    <filter id="oil2" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.08" numOctaves="3" seed="33" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="40"/>
+    </filter>
+  </defs>
+  <g filter="url(#oil2)">
+    <path d="M180 220 q 120 -40 260 -10 q -110 60 -260 10 Z" fill="#e0b34c" opacity="0.85"/>
+    <path d="M1500 170 q 140 -30 280 20 q -140 50 -280 -20 Z" fill="#f2e8d5" opacity="0.7"/>
+    <path d="M900 120 q 90 -25 180 5 q -80 45 -180 -5 Z" fill="#a23327" opacity="0.8"/>
+    <path d="M420 520 q 100 -30 210 0 q -95 50 -210 0 Z" fill="#4a7d68" opacity="0.75"/>
+    <path d="M1250 480 q 130 -35 250 10 q -120 55 -250 -10 Z" fill="#c8862a" opacity="0.8"/>
+    <path d="M1680 620 q 90 -20 170 15 q -85 40 -170 -15 Z" fill="#e0b34c" opacity="0.7"/>
+    <path d="M120 700 q 110 -30 220 5 q -100 45 -220 -5 Z" fill="#f2e8d5" opacity="0.5"/>
+  </g>
+</svg>

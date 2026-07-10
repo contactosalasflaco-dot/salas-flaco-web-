@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200" preserveAspectRatio="xMidYMid slice">
+  <!-- CAPA 0 · Fondo lejano: cielo de óleo. Placeholder — reemplazar por el arte real. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16294a"/>
+      <stop offset="0.45" stop-color="#274b7a"/>
+      <stop offset="0.75" stop-color="#c8862a"/>
+      <stop offset="1" stop-color="#a23327"/>
+    </linearGradient>
+    <filter id="oil0" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="4" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="90"/>
+    </filter>
+    <filter id="oil0b" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.03" numOctaves="3" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="160"/>
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <rect width="1920" height="1200" fill="url(#sky)"/>
+  <g filter="url(#oil0)" opacity="0.85">
+    <ellipse cx="420" cy="260" rx="520" ry="130" fill="#3b6ba5" opacity="0.6"/>
+    <ellipse cx="1420" cy="180" rx="620" ry="150" fill="#16294a" opacity="0.55"/>
+    <ellipse cx="1050" cy="430" rx="700" ry="120" fill="#e0b34c" opacity="0.35"/>
+    <ellipse cx="620" cy="640" rx="800" ry="160" fill="#c8862a" opacity="0.4"/>
+  </g>
+  <g filter="url(#oil0b)" opacity="0.7">
+    <ellipse cx="1550" cy="760" rx="700" ry="180" fill="#a23327" opacity="0.55"/>
+    <ellipse cx="300" cy="900" rx="760" ry="220" fill="#6e1f18" opacity="0.6"/>
+  </g>
+  <!-- El sol NO va acá: es un elemento vivo de StorySection (se pone con el scroll). -->
+</svg>

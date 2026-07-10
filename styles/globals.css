@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — sistema visual de la "pintura"
+   Cambiar estos valores redefine toda la paleta del sitio.
+   ============================================================ */
+@theme {
+  /* Paleta pictórica (óleo) */
+  --color-canvas: #f2e8d5; /* lienzo crudo */
+  --color-canvas-deep: #e4d3b2;
+  --color-ink: #1e1712; /* tinta / sombra profunda */
+  --color-ochre: #c8862a;
+  --color-crimson: #a23327;
+  --color-crimson-deep: #6e1f18;
+  --color-circus: #850706; /* rojo circo: fondo del sitio */
+  --color-circus-yellow: #fcc419; /* amarillo circo: texto sobre el rojo */
+  --color-ultramarine: #274b7a;
+  --color-ultramarine-deep: #16294a;
+  --color-verdigris: #4a7d68;
+  --color-gold: #e0b34c;
+
+  /* Tipografía */
+  --font-display: "Georgia", "Times New Roman", serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Escala de profundidad para sombras "de pintura" */
+  --shadow-paint-sm: 0 2px 6px rgba(30, 23, 18, 0.25);
+  --shadow-paint: 0 6px 18px rgba(30, 23, 18, 0.35);
+  --shadow-paint-lg: 0 14px 40px rgba(30, 23, 18, 0.45);
+
+  --ease-brush: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: auto; /* Lenis se encarga del smooth scroll */
+}
+
+body {
+  background-color: var(--color-circus);
+  color: var(--color-circus-yellow);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   Animación de apertura de boca al cargar la página:
+   los dientes arrancan cerrados (mordiendo en el centro)
+   y se abren hacia sus posiciones finales.
+   ============================================================ */
+@keyframes mouth-open-top {
+  from {
+    transform: translateY(calc(50vh - 100%));
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes mouth-open-bottom {
+  from {
+    transform: translateY(calc(100% - 50vh));
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Cerrada por defecto: recién se abre cuando MouthGate confirma
+   que todas las texturas cargaron (clase .mouth-ready en <html>) */
+.animate-mouth-top {
+  transform: translateY(calc(50vh - 100%));
+}
+
+.animate-mouth-bottom {
+  transform: translateY(calc(100% - 50vh));
+}
+
+html.mouth-ready .animate-mouth-top {
+  animation: mouth-open-top 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+html.mouth-ready .animate-mouth-bottom {
+  animation: mouth-open-bottom 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-mouth-top,
+  .animate-mouth-bottom {
+    animation: none !important;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Dientes-botón: pulso tipo latido (agranda y achica) que
+   invita a tocarlos, como si el diente tuviera pulso propio.
+   ============================================================ */
+@keyframes tooth-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+.tooth-pulse {
+  transform-origin: bottom center;
+  animation: tooth-pulse 2.4s ease-in-out infinite;
+}
+
+.tooth-pulse:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooth-pulse {
+    animation: none;
+  }
+}
+
+/* Textura de lienzo sutil sobre todo el sitio */
+.canvas-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.55;
+  mix-blend-mode: overlay;
+  background-image: url("/art/texture-canvas.svg");
+  background-size: 480px;
+}
+
+/* Titulares con carácter pictórico */
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Utilidad: desactivar parallax si el usuario lo pide */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer {
+    transform: none !important;
+  }
+}
