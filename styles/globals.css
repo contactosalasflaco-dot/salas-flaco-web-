@@ -120,6 +120,25 @@ html.mouth-ready .animate-mouth-bottom {
   }
 }
 
+/* ============================================================
+   Telón de carga: tapa TODO el contenido del fondo mientras
+   las texturas cargan (la boca cerrada queda por encima, z-80).
+   Al estar listo, se desvanece mientras la boca se abre.
+   ============================================================ */
+.mouth-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: var(--color-circus);
+  opacity: 1;
+  transition: opacity 0.7s ease 0.4s;
+}
+
+html.mouth-ready .mouth-curtain {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* En desktop la boca no llega a los bordes de la pantalla:
    desvanecemos los costados para que no se vea el corte del PNG */
 @media (min-width: 768px) {

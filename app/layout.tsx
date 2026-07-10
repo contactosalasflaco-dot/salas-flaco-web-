@@ -53,6 +53,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <SmoothScroll />
         <MouthGate />
+        {/* Telón que oculta el contenido hasta que carguen las texturas */}
+        <div aria-hidden="true" className="mouth-curtain" />
         <TeethTop />
         <TeethBottom />
         <main>{children}</main>
