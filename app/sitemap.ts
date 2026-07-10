@@ -1,16 +1,23 @@
 import type { MetadataRoute } from "next";
 import { commerce } from "@/lib/commerce";
-import { SITE } from "@/lib/site";
+import { ONLY_HOME, SITE } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const products = await commerce.getProducts();
-
-  return [
+  const home: MetadataRoute.Sitemap = [
     {
       url: SITE.url,
       changeFrequency: "weekly",
       priority: 1,
     },
+  ];
+
+  // De momento solo existe la home.
+  if (ONLY_HOME) return home;
+
+  const products = await commerce.getProducts();
+
+  return [
+    ...home,
     {
       url: `${SITE.url}/shows`,
       changeFrequency: "weekly",

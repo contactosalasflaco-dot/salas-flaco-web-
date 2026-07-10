@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Reveal from "@/components/ui/Reveal";
 import PaintedButton from "@/components/art/PaintedButton";
 import { SHOWS, type ShowStatus } from "@/data/shows";
 import { formatShowDate } from "@/lib/format";
-import { SITE } from "@/lib/site";
+import { ONLY_HOME, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Shows",
@@ -55,6 +56,9 @@ function ShowsJsonLd() {
 }
 
 export default function ShowsPage() {
+  // De momento solo está habilitada la home (ver ONLY_HOME en lib/site.ts).
+  if (ONLY_HOME) notFound();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#16294a] via-[#1e1712] to-[#1e1712] px-6 pb-32 pt-36">
       <ShowsJsonLd />

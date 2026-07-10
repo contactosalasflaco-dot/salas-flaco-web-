@@ -1,3 +1,9 @@
+/**
+ * De momento solo está habilitada la home.
+ * Poner en false para reactivar /shows y /merch (páginas + sitemap).
+ */
+export const ONLY_HOME = true;
+
 /** Datos globales del sitio — cambiar acá el nombre del artista. */
 export const SITE = {
   name: "Salas Flaco",

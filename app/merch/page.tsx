@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Reveal from "@/components/ui/Reveal";
 import ProductCard from "@/components/ui/ProductCard";
 import { commerce } from "@/lib/commerce";
-import { SITE } from "@/lib/site";
+import { ONLY_HOME, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Merch",
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
 };
 
 export default async function MerchPage() {
+  // De momento solo está habilitada la home (ver ONLY_HOME en lib/site.ts).
+  if (ONLY_HOME) notFound();
+
   const products = await commerce.getProducts();
 
   return (

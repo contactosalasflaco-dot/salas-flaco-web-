@@ -1,21 +1,23 @@
-import PaintedButton from "@/components/art/PaintedButton";
+import Link from "next/link";
 
+/** 404 — de momento solo existe la home. */
 export default function NotFound() {
   return (
-    <div className="grid min-h-screen place-items-center bg-gradient-to-b from-[#16294a] to-[#1e1712] px-6 text-center">
+    <div className="grid min-h-screen place-items-center px-6 text-center">
       <div>
         <h1
-          className="display text-7xl font-black text-[var(--color-canvas)]"
-          style={{ filter: "url(#paint-wobble)" }}
+          className="-rotate-1 text-4xl text-[var(--color-circus-yellow)] md:text-6xl"
+          style={{ fontFamily: "var(--font-crayon)", filter: "url(#paint-wobble)" }}
         >
-          404
+          no busques lo que no hay
         </h1>
-        <p className="mt-4 italic opacity-80">Esta parte del cuadro todavía no fue pintada.</p>
-        <div className="mt-8">
-          <PaintedButton href="/" color="var(--color-ultramarine)">
-            Volver al lienzo
-          </PaintedButton>
-        </div>
+        <Link
+          href="/"
+          className="mt-10 inline-block text-xl text-[var(--color-circus-yellow)] underline underline-offset-8 opacity-80 transition-opacity hover:opacity-100"
+          style={{ fontFamily: "var(--font-crayon)" }}
+        >
+          volver
+        </Link>
       </div>
     </div>
   );

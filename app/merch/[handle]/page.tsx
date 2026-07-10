@@ -6,7 +6,7 @@ import AddToCart from "@/components/ui/AddToCart";
 import Reveal from "@/components/ui/Reveal";
 import { commerce } from "@/lib/commerce";
 import { formatMoney } from "@/lib/format";
-import { SITE } from "@/lib/site";
+import { ONLY_HOME, SITE } from "@/lib/site";
 
 interface PageProps {
   params: Promise<{ handle: string }>;
@@ -56,6 +56,9 @@ function ProductJsonLd({ product }: { product: NonNullable<Awaited<ReturnType<ty
 }
 
 export default async function ProductPage({ params }: PageProps) {
+  // De momento solo está habilitada la home (ver ONLY_HOME en lib/site.ts).
+  if (ONLY_HOME) notFound();
+
   const { handle } = await params;
   const product = await commerce.getProduct(handle);
   if (!product) notFound();
